@@ -23,7 +23,7 @@ const getAllGames = async (req, res) => {
 
 // for updating price
 
-const updategame = async (req, res) => {
+const updateGame = async (req, res) => {
     try {
         if (!req.authCheck) {
             const updategame = await Product.update(req.body)({
