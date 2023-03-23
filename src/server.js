@@ -5,6 +5,8 @@ const axios = require("axios"); // npm i axios
 const port = process.env.PORT || 80;
 const userRouter = require("./users/routes");
 const User = require ("./users/model");
+const productRouter = require("./product/routes")
+const Product = require ("./product/model")
 
 const app = express();
 app.use(cors());
@@ -13,9 +15,11 @@ app.use(express.json());
 
 const syncTables = () => {
     User.sync({ alter: true, force: false});
+    Product.sync({ alter: true, force: false});
 };
 
 app.use(userRouter);
+app.use(productRouter);
 
 
 app.get("/health", (req, res) => {
