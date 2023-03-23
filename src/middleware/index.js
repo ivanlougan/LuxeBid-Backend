@@ -10,7 +10,7 @@ const hashPass = async (req, res, next) => {
     } catch (error) {
         res.status(501).json({ errorMessage: "failure" , error: error });
     }
-}
+};
 
 const comparePass = async (req, res, next) => {
     try {
@@ -24,7 +24,7 @@ const comparePass = async (req, res, next) => {
     } catch (error) {
         res.status(501).json({ errorMessage: error.message, error: error });
     }
-}
+};
 
 const tokenCheck = async (req, res, next) => {
     try {
@@ -40,5 +40,5 @@ const tokenCheck = async (req, res, next) => {
     } catch (error) {
         res.status(501).json({ errorMessage: "failure", error: error});
     }
-}
+};
 module.exports = { hashPass, tokenCheck, comparePass }

@@ -14,9 +14,7 @@ const getAllGames = async (req, res) => {
     }
 };
 
-
 // for updating price
-
 const updateGame = async (req, res) => {
     try {
         if (!req.authCheck) {
@@ -32,9 +30,7 @@ const updateGame = async (req, res) => {
     } catch (error) {
         res.status(501).json({ errorMessage: error })
     }
-}
-
-
+};
 
 const deleteGame = async (req, res) => {
     try {
@@ -44,7 +40,6 @@ const deleteGame = async (req, res) => {
         res.status(501).json({ errorMessage: error })
     }
 };
-
 
 module.exports = {
     getAllGames,
