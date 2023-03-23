@@ -18,6 +18,6 @@ const VideoGame = connection.define("",
         allowNull: false,
     }
     
-})
+});
 
 module.exports = VideoGame;

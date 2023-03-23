@@ -13,7 +13,7 @@ app.use(express.json());
 
 const syncTables = () => {
     User.sync({ alter: true, force: false});
-}
+};
 
 app.use(userRouter);
 
