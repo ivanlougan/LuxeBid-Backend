@@ -14,6 +14,20 @@ const getAllGames = async (req, res) => {
     }
 };
 
+
+const addGame = async (req, res) => {
+    try {
+        const addgame = await Product.create(req.body);
+
+        res.status(201).json({ message: "success", newGame: addgame})
+    } catch (error) {
+        res.status(501).json({ errorMessage })
+    }
+};
+
+
+
+
 // for updating price
 const updateGame = async (req, res) => {
     try {
@@ -42,6 +56,7 @@ const deleteGame = async (req, res) => {
 };
 
 module.exports = {
+    addGame,
     getAllGames,
     deleteGame,
     updateGame
