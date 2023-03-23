@@ -25,8 +25,8 @@ app.get("/health", (req, res) => {
 // FE hits /getGames which sends request to API, sends it back to FE
 // Client-ID and Authorization header values are here for everyone to use,
 // but is best being replaced with template literals:
-// "Client-ID": `${process.env.CLIENT-ID}
-// "Authorization": `Bearer ${process.env.TOKEN}
+// "Client-ID": `${process.env.CLIENT_ID}
+// "Authorization": `Bearer ${process.env.API_TOKEN}
 app.post("/getGames", (req, res) => {
     axios({ url: "https://api.igdb.com/v4/games",
         method: 'POST',
