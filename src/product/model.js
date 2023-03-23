@@ -13,6 +13,10 @@ const VideoGame = connection.define("",
         type: DataTypes.STRING,
         allowNull: false,
     },
+    Price: {
+        type: DataTypes.DataTypes.STRING,
+        allowNull: false,
+    }
     
 })
 

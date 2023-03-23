@@ -29,11 +29,11 @@ const comparePass = async (req, res, next) => {
 const tokenCheck = async (req, res, next) => {
     try {
         const token = req.header("Authorization");
-        const decodedToken = await jwt.verify(token, process.env.SECRET_KEY);
+        const decodedToken = await jwt.verify(token, process.env.SECRET_KEY);        
         const user = await User.findOne({ where: { id: decodedToken.id }});
         if (!user) {
              const error = new Error("User Not Authorized");
-             res.status(401).json({ eroorMessage: error.message, error: error})           
+             res.status(401).json({ errorMessage: error.message, error: error})           
         }
         req.authCheck = user;
         next();
