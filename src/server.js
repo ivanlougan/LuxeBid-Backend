@@ -27,25 +27,23 @@ app.get("/health", (req, res) => {
 // but is best being replaced with template literals:
 // "Client-ID": `${process.env.CLIENT_ID}
 // "Authorization": `Bearer ${process.env.API_TOKEN}
-app.post("/getGames", (req, res) => {
-    axios({ url: "https://api.igdb.com/v4/games",
-        method: 'POST',
+app.get("/getGames", async (req, res) => {
+    try {
+      const response = await axios({
+        method: "GET",
+        url: "https://www.giantbomb.com/api/games/?api_key=fad54890b63f75702e4857676616df3f8fe589c0&format=json&field_list=id,image,name&limit=10",
         headers: {
-            'Accept': 'application/json',
-            'Client-ID': `${process.env.CLIENT_ID}`,
-            "Authorization": `Bearer ${process.env.API_TOKEN}`
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
-        data:
-            "fields age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,checksum,collection,cover,created_at,dlcs,expanded_games,expansions,external_games,first_release_date,follows,forks,franchise,franchises,game_engines,game_localizations,game_modes,genres,hypes,involved_companies,keywords,language_supports,multiplayer_modes,name,parent_game,platforms,player_perspectives,ports,rating,rating_count,release_dates,remakes,remasters,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites;"
-    })
-        .then(response => {
-                console.log(response.data)
-                res.json(response.data)
-        })
-        .catch(err => {
-                res.send(err)
-        });
-});
+      });
+      const data = await response.data.results;
+      console.log(data)
+      res.status(200).json({ data: data });
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
 app.listen(port, () => {
     syncTables();
