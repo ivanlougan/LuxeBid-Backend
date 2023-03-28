@@ -42,7 +42,7 @@ app.get("/getGames", async (req, res) => {
         },
       });
       const data = await response.data.results;
-      console.log(data)
+      console.log("DATA: ", data)
       res.status(200).json({ data: data });
     } catch (error) {
       console.error(error);
