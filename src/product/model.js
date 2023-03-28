@@ -6,7 +6,7 @@ const VideoGame = connection.define("Product",
     title: {
         type: DataTypes.STRING,
         allowNull: false,
-        unqiue: true
+        // unqiue: true
 
     },
     studio: {
@@ -16,8 +16,10 @@ const VideoGame = connection.define("Product",
     Price: {
         type: DataTypes.STRING,
         allowNull: false,
-    }
+    },
+},
     
+    { indexes: [{unique: true, fields: ["title"]}]
 });
 
 module.exports = VideoGame;
