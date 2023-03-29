@@ -23,7 +23,7 @@ const login = async (req, res) => {
         res.status(201).json({ message: "success",
             user: {
                 username: req.authCheck.username,
-                password: req.authCheck.email
+                email: req.authCheck.email
             }});
             return;  
         }
