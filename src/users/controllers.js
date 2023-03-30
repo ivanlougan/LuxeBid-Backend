@@ -15,7 +15,7 @@ const registerUser = async (req, res) => {
     } catch (error) {
         res.status(501).json({ message: error.message, error: error })
     }
-}
+};
 
 const login = async (req, res) => {
     try {
@@ -23,7 +23,7 @@ const login = async (req, res) => {
         res.status(201).json({ message: "success",
             user: {
                 username: req.authCheck.username,
-                password: req.authCheck.email
+                email: req.authCheck.email
             }});
             return;  
         }
@@ -41,7 +41,8 @@ const login = async (req, res) => {
     } catch (error) {
         res.status(501).json({ message: error.message, error: error})
     }
-}
+};
+
 const updateUser = async (req, res) => {
     try {
         if (!req.authCheck) {
@@ -58,8 +59,9 @@ const updateUser = async (req, res) => {
       console.log(error);
       res.status(500).send({ error: error.message });
     }
-  };
-  const deleteUser = async (req, res) => {
+};
+
+const deleteUser = async (req, res) => {
     try {
         if (!req.authCheck) {
             const error = new Error("User is not authorised");
@@ -71,5 +73,6 @@ const updateUser = async (req, res) => {
     catch (error) {
         res.status(501).json({ errorMessage: error.message, error: error });
     }
-}
+};
+
 module.exports = { registerUser, login, updateUser, deleteUser}
